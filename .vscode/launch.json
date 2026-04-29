@@ -1,0 +1,246 @@
+{
+  "version": "0.2.0",
+  "inputs": [
+    {
+      "id": "pymthouseBaseUrl",
+      "type": "promptString",
+      "description": "PymtHouse origin (base URL)",
+      "default": "https://pymthouse.com"
+    },
+    {
+      "id": "pymthouseClientId",
+      "type": "promptString",
+      "description": "Public OIDC client id (app_...)",
+      "default": "app_c5335e635593432ca975877a"
+    },
+    {
+      "id": "lv2vModelId",
+      "type": "promptString",
+      "description": "LV2V model id",
+      "default": "streamdiffusion-sdxl"
+    },
+    {
+      "id": "naapDiscoverOrchestratorsUrl",
+      "type": "promptString",
+      "description": "NAAP discover orchestrators URL (caps are added by the client for the model)",
+      "default": "https://naap-api.cloudspe.com/v1/discover/orchestrators"
+    }
+  ],
+  "configurations": [
+    {
+      "name": "example: device_login",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/examples/device_login.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "args": [
+        "--base-url",
+        "${input:pymthouseBaseUrl}",
+        "--client-id",
+        "${input:pymthouseClientId}",
+      ],
+      "presentation": {
+        "group": "examples",
+        "order": 1
+      },
+      "python": "${command:python.interpreterPath}",
+    },
+    {
+      "name": "example: device_login (browser PKCE)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/examples/device_login.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "args": [
+        "--base-url",
+        "${input:pymthouseBaseUrl}",
+        "--client-id",
+        "${input:pymthouseClientId}",
+        "--browser"
+      ],
+      "presentation": {
+        "group": "examples",
+        "order": 2
+      },
+      "python": "${command:python.interpreterPath}",
+    },
+    {
+      "name": "example: logout (clear one issuer)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/examples/logout.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "args": [
+        "--base-url",
+        "${input:pymthouseBaseUrl}",
+        "--client-id",
+        "${input:pymthouseClientId}"
+      ],
+      "presentation": {
+        "group": "examples",
+        "order": 3
+      }
+    },
+    {
+      "name": "example: logout --all",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/examples/logout.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "args": ["--all"],
+      "presentation": {
+        "group": "examples",
+        "order": 4
+      }
+    },
+    {
+      "name": "example: lv2v_stream",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/examples/lv2v_stream.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "args": [
+        "--base-url",
+        "${input:pymthouseBaseUrl}",
+        "--client-id",
+        "${input:pymthouseClientId}",
+        "--model-id",
+        "${input:lv2vModelId}",
+        "--discovery-url",
+        "${input:naapDiscoverOrchestratorsUrl}",
+        "--count",
+        "3000"
+      ],
+      "presentation": {
+        "group": "examples",
+        "order": 5
+      },
+      "python": "${command:python.interpreterPath}"
+    },
+    {
+      "name": "example: lv2v_stream (urls only)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/examples/lv2v_stream.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "args": [
+        "--base-url",
+        "${input:pymthouseBaseUrl}",
+        "--client-id",
+        "${input:pymthouseClientId}",
+        "--model-id",
+        "${input:lv2vModelId}",
+        "--discovery-url",
+        "${input:naapDiscoverOrchestratorsUrl}",
+        "--urls-only"
+      ],
+      "presentation": {
+        "group": "examples",
+        "order": 6
+      },
+      "python": "${command:python.interpreterPath}"
+    },
+    {
+      "name": "example: byoc_process",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/examples/byoc_process.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "args": [
+        "--base-url",
+        "${input:pymthouseBaseUrl}",
+        "--client-id",
+        "${input:pymthouseClientId}"
+      ],
+      "presentation": {
+        "group": "examples",
+        "order": 7
+      }
+    },
+    {
+      "name": "example: byoc_sse",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/examples/byoc_sse.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "args": [
+        "--base-url",
+        "${input:pymthouseBaseUrl}",
+        "--client-id",
+        "${input:pymthouseClientId}"
+      ],
+      "presentation": {
+        "group": "examples",
+        "order": 8
+      }
+    },
+    {
+      "name": "example: custom_branding",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/examples/custom_branding.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "presentation": {
+        "group": "examples",
+        "order": 9
+      }
+    },
+    {
+      "name": "example: plugin_server",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/examples/plugin_server.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "presentation": {
+        "group": "examples",
+        "order": 10
+      }
+    },
+    {
+      "name": "example: runner_hello_world",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/examples/runner_hello_world.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "presentation": {
+        "group": "examples",
+        "order": 11
+      }
+    },
+    {
+      "name": "example: runner_hello_world_sse",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/examples/runner_hello_world_sse.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "presentation": {
+        "group": "examples",
+        "order": 12
+      }
+    }
+  ]
+}
