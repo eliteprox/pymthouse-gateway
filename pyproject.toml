@@ -16,7 +16,7 @@ keywords = ["pymthouse", "livepeer", "oidc", "byoc", "sse", "ai"]
 dependencies = [
     # Pinned from branch feat/remote-signer-byoc (commit 766ee55d9c9d7dff888aa3667a1f8719ba31d273).
     "livepeer-gateway @ git+https://github.com/eliteprox/python-gateway.git@766ee55d9c9d7dff888aa3667a1f8719ba31d273",
-    "authlib>=1.3.0",
+    "authlib>=1.7.1",
     "httpx>=0.27.0",
     "aiohttp>=3.9.0",
 ]
